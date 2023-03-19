@@ -6,28 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfAppDataBase.MVVM.Models.Enteties
+namespace WpfAppDataBase.MVVM.Models.Entities
 {
-    internal class CommentEntity
+    public class CommentEntity
     {
         [Key]
         public int Id { get; set; }
 
-        [MaxLength]
-        public string Comment { get; set; } = null!;
-
         [Column(TypeName = "datetime")]
-        public DateTime EntryTime { get; set; }
+        public DateTime Created { get; set; }
 
+        public string? Description { get; set; }
 
-        [Required]
-        public int CaseId { get; set; }
-
-        public CaseEntity Case { get; set; } = null!;
-
-        [Required]
-        public int CustomerId { get; set; }
+        public CaseEntity Case { get; set; } =null!;
 
         public CustomerEntity Customer { get; set; } = null!;
+        public DateTime EntryTime { get; internal set; }
     }
 }

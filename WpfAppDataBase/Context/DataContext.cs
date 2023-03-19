@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WpfAppDataBase.MVVM.Models.Enteties;
+using System;
+using WpfAppDataBase.MVVM.Models.Entities;
 
 namespace WpfAppDataBase.Context
 {
@@ -20,7 +21,7 @@ namespace WpfAppDataBase.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (optionsBuilder.IsConfigured)
+            if (!optionsBuilder.IsConfigured)
                 optionsBuilder.UseSqlServer(_connectionString);
         }
 
@@ -28,12 +29,17 @@ namespace WpfAppDataBase.Context
         {
             base.OnModelCreating(modelBuilder); //modells if they need dubble keys
         }
+
+        internal void Remove()
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
 
-        public DbSet<AddressEntity> Addresses { get; set; } = null!;
-        public DbSet<CustomerEntity> Customers { get; set; } = null!;
-        public DbSet<CommentEntity> Comments { get; set; } = null!;
-        public DbSet<CaseEntity> Cases { get; set; } = null!;
+        public DbSet<AddressEntity> Addresses { get; set; }
+        public DbSet<CustomerEntity> Customers { get; set; }
+        public DbSet<CommentEntity> Comments { get; set; }
+        public DbSet<CaseEntity> Cases { get; set; }
     }
 }

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAppDataBase.MVVM.Models;
+using WpfAppDataBase.Services;
 
 namespace WpfAppDataBase
 {
@@ -20,9 +22,40 @@ namespace WpfAppDataBase
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<Customer> customers = new List<Customer>();
         public MainWindow()
         {
             InitializeComponent();
+            
+          
+            
         }
+
+        private void Btn_Add_Click(object sender, RoutedEventArgs e)
+        {
+            customers.Add(new Customer
+            {
+                //FirstName = tb_FirstName.Text,
+                //LastName = tb_LastName.Text,
+                //Email = tb_Email.text
+
+            } );
+            ClearForm();
+
+        }
+
+        private void ClearForm()
+        {
+            //tb_FirstName.Text = "";
+            //tb_LastName.Text = "";
+            //tb_Email.Text = "";
+        }
+
+        private void btn_Add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
     }
 }
